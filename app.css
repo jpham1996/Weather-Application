@@ -1,3 +1,7 @@
+html {
+  min-height: 100vh;
+}
+
 body {
   background-image: url(./img/weather-background.png);
   background-size: cover;
