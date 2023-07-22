@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Application</title>
+
+    <link rel="stylesheet" href="app.css" rel="text/css" />
+  </head>
+  <body>
+    <form id="weather_form">
+      <input type="text" class="inputValue" placeholder="Enter a city name" />
+      <input type="submit" value="Enter" class="enter" />
+    </form>
+    <p class="errorMessage"></p>
+
+    <h1 id="headerTitle">Weather Forecast <span id="weather_city"></span></h1>
+
+    <div id="forecastContainer"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
