@@ -1,4 +1,5 @@
-const KEY = "1034fd268f112bf62313ff5b3ab38b61";
+import WEATHER_API_KEY from "./apikey.js";
+
 const form = document.querySelector("#weather_form");
 const inputValue = document.querySelector(".inputValue");
 const forecastContainer = document.querySelector("#forecastContainer");
@@ -27,7 +28,7 @@ const getCurrentPosition = function () {
 
       // Get Forecast Data from API Call
       await fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${KEY}`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${WEATHER_API_KEY}`
       )
         .then((res) => {
           if (!res.ok) {
@@ -41,7 +42,7 @@ const getCurrentPosition = function () {
           displayForecast(data);
 
           // Get City Name from API Call
-          return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}
+          return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}
           `);
         })
         .then((res) => {
@@ -142,7 +143,7 @@ const fetchCity = async (e) => {
 
       // Get Forecast Data from API Call
       return fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${KEY}`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${WEATHER_API_KEY}`
       );
     })
     .then((res) => {
