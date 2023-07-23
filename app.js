@@ -126,7 +126,7 @@ const fetchCity = async (e) => {
   await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${inputValue.value.match(
       letters
-    )}&appid=${KEY}`
+    )}&appid=${WEATHER_API_KEY}`
   )
     .then((res) => {
       inputValue.value = "";
