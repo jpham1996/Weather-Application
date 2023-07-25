@@ -42,7 +42,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 3.438rem;
+  min-height: 3.75rem;
 }
 
 .currentTemp {
