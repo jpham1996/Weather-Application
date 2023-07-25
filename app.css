@@ -1,8 +1,9 @@
 html {
-  min-height: 100vh;
+  height: 100%;
 }
 
 body {
+  min-height: 100vh;
   background-image: url(./img/weather-background.png);
   background-size: cover;
   text-align: center;
@@ -17,14 +18,14 @@ body {
 #forecastContainer {
   display: flex;
   justify-content: center;
-  column-gap: 5px;
+  column-gap: 0.3rem;
   margin-top: 0.625rem;
 }
 
 .weather_card {
   background-color: #87cefa;
   border: 1px solid black;
-  width: 5%;
+  width: 10%;
 }
 
 .day-container {
@@ -32,19 +33,17 @@ body {
   font-weight: bold;
 }
 
-.img-container {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .img-responsive {
+  position: relative;
+  top: 0.625rem;
   width: 70%;
 }
 
 .weatherDescription {
-  padding-top: 0.625rem;
-  width: 70%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.438rem;
 }
 
 .currentTemp {
@@ -58,122 +57,12 @@ body {
   font-size: 1.25rem;
 }
 
-/* High pixel resolution devices */
-
-@media screen and (min-width: 2292px) {
-  .weatherDescription {
-    width: 100%;
-  }
-
-  .weather_card {
-    width: 11%;
-  }
-}
-
-@media screen and (max-width: 2291px) and (min-width: 1652px) {
-  .weather_card {
-    width: 10%;
-  }
-
-  .weatherDescription {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 1651px) and (min-width: 1375px) {
-  .weather_card {
-    width: 9%;
-  }
-
-  .weatherDescription {
-    width: 100%;
-  }
-}
-
-/* Low pixel resolution devices */
-
-@media screen and (max-width: 1374px) and (min-width: 1271px) {
-  .weather_card {
-    width: 9%;
-  }
-
-  .weatherDescription {
-    width: 100%; /* Main One */
-  }
-}
-
-@media screen and (max-width: 1270px) and (min-width: 1150px) {
-  .weather_card {
-    width: 9%;
-  }
-  .weatherDescription {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 1149px) and (min-width: 999px) {
-  .weather_card {
-    width: 7.5%;
-  }
-}
-
-@media screen and (max-width: 998px) and (min-width: 872px) {
-  .weather_card {
-    width: 8.6%;
-  }
-}
-
-@media screen and (max-width: 871px) and (min-width: 780px) {
-  .weather_card {
-    width: 10%;
-  }
-}
-
-@media screen and (max-width: 779px) and (min-width: 702px) {
-  .weather_card {
-    width: 10.8%;
-  }
-}
-
-@media screen and (max-width: 701px) and (min-width: 634px) {
-  .weather_card {
-    width: 12%;
-  }
-}
-
-@media screen and (max-width: 634px) and (min-width: 583px) {
-  .weather_card {
-    width: 13%;
-  }
-  .weatherDescription {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 582px) and (min-width: 554px) {
-  .weather_card {
-    width: 14%;
-  }
-  .weatherDescription {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 553px) and (min-width: 505px) {
-  .weather_card {
-    width: 15%;
-  }
-  .weatherDescription {
-    width: 100%;
-  }
-}
-
 @media screen and (max-width: 504px) {
   #forecastContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 5px;
+    row-gap: 0.3rem;
   }
 
   .weather_card {
