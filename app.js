@@ -1,5 +1,7 @@
+// Import API Key
 import WEATHER_API_KEY from "./apikey.js";
 
+// DOM Selectors
 const form = document.querySelector("#weather_form");
 const inputValue = document.querySelector(".inputValue");
 const forecastContainer = document.querySelector("#forecastContainer");
@@ -7,11 +9,13 @@ const errorMessage = document.querySelector(".errorMessage");
 let weatherCityText = document.querySelector("#weather_city");
 let headerTitle = document.querySelector("#headerTitle");
 
+// Convert from Kelvin to Fahrenheit
 const convertKtoF = function (kelvin) {
   const fahrenheit = (kelvin - 273.15) * 1.8 + 32;
   return Math.floor(fahrenheit);
 };
 
+// Get City Name Text
 const getCityNameText = function (data) {
   const cityName = data.name;
   headerTitle.innerText = "";
@@ -19,9 +23,9 @@ const getCityNameText = function (data) {
   headerTitle.innerText = `Weather Forecast ${weatherCityText}`;
 };
 
+// Get current position from the Geolocation Object
 const getCurrentPosition = function () {
   if (navigator.geolocation) {
-    // Only using success parameter passed as an async function
     navigator.geolocation.getCurrentPosition(async function (pos) {
       const lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
@@ -41,7 +45,7 @@ const getCurrentPosition = function () {
 
           displayForecast(data);
 
-          // Get City Name from API Call
+          // Fetch City Name from lat, lon, and API Key
           return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}
           `);
         })
@@ -55,14 +59,13 @@ const getCurrentPosition = function () {
           getCityNameText(data);
         })
         .catch(() => {
-          errorMessage.textContent = "Please search for a valid city";
+          errorMessage.innerText = "Please search for a valid city";
         });
     });
   }
 };
 
-window.addEventListener("load", getCurrentPosition);
-
+// Display 7 Day Forecast
 const displayForecast = function (data) {
   forecastContainer.innerHTML = "";
   let image;
@@ -118,11 +121,11 @@ const displayForecast = function (data) {
   });
 };
 
+// Searches for city name, and retrives city's lat and lon to display 7 Day Forecast
 const fetchCity = async (e) => {
-  // Prevents form from submitting
   e.preventDefault();
-  // Get City Name from API Call
-  const letters = /^[^\d]+$/; // Matches non-numerical numbers [A-Z]
+  // Matches non-numerical numbers [A-Z]
+  const letters = /^[^\d]+$/;
   await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${inputValue.value.match(
       letters
@@ -141,7 +144,7 @@ const fetchCity = async (e) => {
       getCityNameText(data);
       const { lat, lon } = data.coord;
 
-      // Get Forecast Data from API Call
+      // Fetches lat, and lon from previous API call, and API Key
       return fetch(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${WEATHER_API_KEY}`
       );
@@ -153,11 +156,13 @@ const fetchCity = async (e) => {
       return res.json();
     })
     .then((data) => {
+      console.log(data);
       displayForecast(data);
     })
     .catch(() => {
-      errorMessage.textContent = "Please search for a valid city name";
+      errorMessage.innerText = "Please search for a valid city name";
     });
 };
 
+window.addEventListener("load", getCurrentPosition);
 form.addEventListener("submit", fetchCity);
